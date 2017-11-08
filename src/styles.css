@@ -1,0 +1,10 @@
+/* Bootstrap 4 CSS */
+@import './vendor/bootstrap/css/bootstrap.min.css';
+
+body{
+    background: rgb(85, 85, 85);
+    background-image: url('./images/oriat.jpg');
+    height: 100%;
+    user-select: none;
+}
+

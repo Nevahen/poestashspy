@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center">
+  <form (submit)="preventDefault($event)" (ngSubmit)="searchAccount(search.value)" class="form-inline">
+    <input type="text" #search class="form-control" placeholder="Enter account name..." />
+    <button (click)="searchAccount(search.value)" class="btn btn-primary">Search account</button>
+  </form>
+
+</div>
+
+<div class="container mt-2">
+
+
+  <div class="row">
+    <h2 *ngIf="hasSearched">Results for {{search.value}}:</h2>
+  </div>
+  <hr/>
+
+
+  <div *ngIf="accounts != ''" class="row results">
+    <div class="card" *ngFor="let account of accounts">
+      <a [routerLink]="['/stashView',account.accountName]">
+        <h2>{{account.accountName}}</h2>
+      </a>
+    </div>
+
+  </div>
+
+
+</div>

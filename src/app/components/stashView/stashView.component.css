@@ -1,0 +1,49 @@
+*{margin: 0px;
+padding: 0px;}
+
+.stashContainer{
+    min-width: 570px !important;
+    height: 571px !important;
+    background: #884f06;
+    background-image: url('../../../images/stashbg.png');
+    float: left;
+
+    
+}
+
+.stashlink{
+
+    border-left: 0px;
+    float: left;
+}
+li:first-of-type{
+    border-top:1px solid #060888;
+}
+
+li{
+    padding-left: 5px;
+    font-size: 19px;
+    border-bottom:1px solid #060888;
+    border-right:1px solid #060888;
+}
+
+
+
+.stashlink li:hover{
+    cursor: pointer;
+    background: #d66412
+}
+
+.stashlink ul{
+    max-height: 567px !important;
+    box-sizing:  border-style color;
+   
+    overflow-y: auto;
+    overflow-x: hidden;
+   
+}
+  
+.stashinfo ul{
+    list-style: none;
+}
+

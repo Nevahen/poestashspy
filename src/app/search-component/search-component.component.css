@@ -1,0 +1,65 @@
+.form-control{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.63);
+    border-width: 2px 2px 2px 2px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+}
+
+.btn-primary{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-width: 2px 2px 2px 2px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+}
+
+.result-text{
+    -webkit-text-stroke: 2px black;
+}
+
+h2{
+    color: #fff;
+    
+}
+
+
+
+a:hover{
+    text-decoration: none;
+}
+
+
+.card{
+    margin: 5px;
+    padding-top: 5px;
+    background: rgba(0, 109, 159, 0.7);
+    border: 2px solid rgba(19, 63, 82, 0.692);
+    box-shadow: 2px 2px 4px rgb(34, 34, 34);
+    color: rgb(190, 212, 221);
+}
+.card h2{
+    color:rgb(180, 195, 216);
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+
+  }
+
+
+.card:hover{
+    background: rgba(179, 223, 255, 0.692);
+    color: rgb(4, 56, 68)    
+}
+
+.card h2:hover{
+    color:rgb(83, 96, 211);
+}
+
+.results{
+    max-height: 65vh;
+    overflow-y: auto;
+}
+

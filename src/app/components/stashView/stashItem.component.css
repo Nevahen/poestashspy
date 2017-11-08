@@ -1,0 +1,16 @@
+div{
+    
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    background: rgba(31, 75, 219, 0.247);
+}
+
+:host{
+    position: absolute;
+    height: 0px;
+}
+
+div:hover{
+    background: rgba(233, 198, 85, 0.253);
+}

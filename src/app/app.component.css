@@ -1,0 +1,35 @@
+header{
+    background: rgba(0, 0, 0, 0.719);
+    height: 15vh;
+    margin: 0px;
+    padding:0px;
+    box-shadow: 0px 0px 25px rgb(26, 26, 26);
+    padding-top:25px;
+}
+
+
+
+.container {
+    padding: 0px;
+}
+
+header h1{
+color: white;
+
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 6.5vh;
+}
+
+footer{
+    background: rgba(0, 0, 0, 0.747);
+    padding: 2px;
+    color: rgb(114, 114, 114);
+    font-size: 12px;
+    margin-left: 5px;
+    position: absolute;
+    bottom: 0;
+}
+
+.footertxt{
+    margin: auto;
+}
