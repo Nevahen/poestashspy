@@ -12,10 +12,8 @@ provides a way to view there stashes from browser
 ### Dev mode:
 ---
 
-`npm install`
-
-`pip install -r requirements.txt`
-
+`npm install`  
+`pip install -r requirements.txt`  
 
 import schemas from ./schemas/ to your db. *Ex:*
 
@@ -24,12 +22,9 @@ import schemas from ./schemas/ to your db. *Ex:*
 change DB connection info in ggg.py and app.js (Config file soon..?)
 
 
-run ggg.py to fetch data from ggg api to database
+run ggg.py to fetch data from ggg api to database  
+start backend api (port 3000)  
+`supervisor app.js`  
 
-start backend api (port 3000)
-
-`supervisor app.js to`
-
-launch front end (port 4200)
-
+launch front end (port 4200)  
 `npm start`
