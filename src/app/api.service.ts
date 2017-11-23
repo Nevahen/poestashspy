@@ -10,18 +10,18 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class ApiService {
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient
+  ) { }
 
-    private stashUrl = '/api/stashes/';
+  private stashUrl = '/api/stashes/';
 
   getStashByID(stashid: number): Observable<Stash>{
 
     var sUrl = this.stashUrl + stashid;
-      console.log(sUrl);
+    console.log(sUrl);
       
-      return this.http.get<Stash>(sUrl);
-
-  }
+    return this.http.get<Stash>(sUrl);
+    }
 
   // Rename / Make new function because it doesn't get only latest stashes anymore
   getLatestStashes(account?:string): Observable<Stash>{
@@ -32,17 +32,12 @@ export class ApiService {
     return this.http.get<Stash>('/api/stashes/');
   }
 
-
   searchAccountByName(account: string): Observable<string>{
-
     return this.http.get<string>('/api/accounts?search='+account)
-
   }
 
-  recentAccounts(): Observable<string>{
-    
-        return this.http.get<string>('/api/accounts')
-    
+  recentAccounts(): Observable<string>{    
+        return this.http.get<string>('/api/accounts')    
       }
 
 

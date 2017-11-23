@@ -6,9 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app2';
-  desc = 'this is a test';
-  onKey(value: string){
-    this.desc = "You typed: " + value;
-  }
 }

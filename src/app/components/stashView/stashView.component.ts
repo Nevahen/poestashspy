@@ -34,8 +34,7 @@ export class StashView{
             // get random stash
             this.GetStash(1);                   
             this.GetLatestStashes();
-            }
-           
+            }           
         }
 
     /*
@@ -49,8 +48,7 @@ export class StashView{
     selectedStash : any;
     items : any;
 
-    selectedItem = null;
-    
+    selectedItem = null;    
 
     SelectItem(item){
         this.selectedItem = item;        
@@ -66,15 +64,14 @@ export class StashView{
             }
             console.log(stash);
             this.selectedStash = stash.itemData[0];
-            this.items = this.selectedStash['itemData'];
-        
+            this.items = this.selectedStash['itemData'];        
         });  
     }
 
     GetLatestStashes(account?, cb?:Function){
 
         this.apiService.getLatestStashes(account)
-        .subscribe((stashes) => {
+        .subscribe((stashes) => {            
             this.stashes = stashes['stashes'];
             console.log(stashes);
 

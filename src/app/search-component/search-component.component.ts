@@ -14,8 +14,7 @@ export class SearchComponentComponent implements OnInit {
   ngOnInit() {
     this.apiService.recentAccounts()
     .subscribe((results:any) =>{
-      this.accounts = results.accounts;
-    
+      this.accounts = results.accounts;    
     })
   }
 
@@ -24,20 +23,13 @@ export class SearchComponentComponent implements OnInit {
   }
 
   accounts;
-
   hasSearched = false;
-
-  searchAccount(search){
-    
+  searchAccount(search){    
     
     this.apiService.searchAccountByName(search)
     .subscribe((results:any) =>{
       this.accounts = results.accounts;
       this.hasSearched = true;
     })
-
   }
-
-
-
 }

@@ -16,7 +16,6 @@ const routes: Routes = [
   {path: 'search', component: SearchComponentComponent},
   {path: 'stashView/:account', component: StashView},
   {path: '', redirectTo: '/search', pathMatch:'full' }
-
 ]
 
 @NgModule({

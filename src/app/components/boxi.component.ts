@@ -7,8 +7,8 @@ styleUrls: ['./boxi.component.css']
 })
 
 export class Boxi{
-    name = "2222";
-    desc = "asjdlkasjd";
+    name = "";
+    desc = "";
 
     @Input() pos;
     @Input() itemData;
