@@ -10,6 +10,7 @@ import { StashItem } from './components/stashView/stashItem.component';
 import { ApiService } from './api.service';
 import { RouterModule, Routes} from '@angular/router';
 import { SearchComponentComponent } from './search-component/search-component.component';
+import { LeagueSelectionComponent } from './league-selection/league-selection.component';
 
 const routes: Routes = [
   {path: 'stashView', component: StashView},
@@ -25,7 +26,8 @@ const routes: Routes = [
     Navbar,
     StashView,
     StashItem,
-    SearchComponentComponent,   
+    SearchComponentComponent,
+    LeagueSelectionComponent,   
   ],
   imports: [
     RouterModule.forRoot(routes),

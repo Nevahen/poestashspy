@@ -82,7 +82,7 @@ app.get('/api/accounts/:str/', function (req, res) {
 
 app.get('/api/accounts/:str/stashes', function (req, res) {
   
-    var sql = "SELECT stashID,stashName,stashType from stashes WHERE accountName = ?"
+    var sql = "SELECT stashID,stashName,stashType,league from stashes WHERE accountName = ?"
     sql = mysql.format(sql, req.params.str);
   
     con.query(sql, function (error, result) {

@@ -45,6 +45,7 @@ export class StashView{
     */
 
     stashes = null;
+    filteredStashes = null;
     selectedStash : any;
     items : any;
 
@@ -73,6 +74,7 @@ export class StashView{
         this.apiService.getLatestStashes(account)
         .subscribe((stashes) => {            
             this.stashes = stashes['stashes'];
+            this.filteredStashes = this.stashes;
             console.log(stashes);
 
             // Callback when stashes fetched
@@ -80,6 +82,33 @@ export class StashView{
                 cb();
             }
         })
+
+    }
+
+    handleLeagueSelection(league){
+        
+        if(league == 'All'){
+            this.filteredStashes = Object.assign([], this.stashes);
+        }
+        else{
+            this.filterStashes(league);
+        }
+        
+
+    }
+
+    filterStashes(league){
+        
+        this.filteredStashes = Object.assign([], this.stashes);
+
+        for(var i = this.filteredStashes.length; i--;){
+            if (this.filteredStashes[i]['league'] != league){
+                console.log(this.filteredStashes[i]);
+                this.filteredStashes.splice(i,1);
+                console.log("Popped stash");
+            }
+        }
+    
 
     }
 
