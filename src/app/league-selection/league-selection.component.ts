@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Output,EventEmitter } from '@angular/core/';
+import { Output,Input, EventEmitter } from '@angular/core/';
 
 
 @Component({
@@ -15,10 +15,12 @@ export class LeagueSelectionComponent implements OnInit {
   ngOnInit() {
   }
 
-  leagues = ['All','Standard','Hardcode','Harbinger','Harbinger HC'];
+  @Input() stashCounts;
+
+  leagues = ['All','Standard','Hardcode','Harbinger','Harbinger HC','10 Day Mayhem (ORE004)', '10 Day Mayhem HC (ORE005)'];
 
   leagueOnClick(league:string):void{
-        console.log(league);
+        console.log(this.stashCounts);
         this.leagueSelection.emit(league);
   }
 

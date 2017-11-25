@@ -1,4 +1,7 @@
 <div class="btn-group mb-2" role="group">
-  <button type="button" (click)="leagueOnClick(league)" class="btn btn-primary btn-league" *ngFor="let league of leagues">{{league}}</button>
+  <button type="button"
+  (click)="leagueOnClick(league)"
+  class="btn btn-primary btn-league"
+  *ngFor="let league of leagues">{{league}}<span class="badge badge-default badge-pill" *ngIf="stashCounts[league]"> {{stashCounts[league]}}</span></button>
 
-  </div>
+</div>

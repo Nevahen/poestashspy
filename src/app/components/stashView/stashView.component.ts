@@ -45,6 +45,7 @@ export class StashView{
     */
 
     stashes = null;
+    stashCounts = {};
     filteredStashes = null;
     selectedStash : any;
     items : any;
@@ -63,7 +64,6 @@ export class StashView{
             if(stash.itemData[0]['stashType'] != 'PremiumStash'){
                 return;
             }
-            console.log(stash);
             this.selectedStash = stash.itemData[0];
             this.items = this.selectedStash['itemData'];        
         });  
@@ -75,7 +75,7 @@ export class StashView{
         .subscribe((stashes) => {            
             this.stashes = stashes['stashes'];
             this.filteredStashes = this.stashes;
-            console.log(stashes);
+            this.CountStashes();
 
             // Callback when stashes fetched
             if(cb){
@@ -85,6 +85,17 @@ export class StashView{
 
     }
 
+
+    CountStashes(){
+        for(let stash in this.stashes){
+            this.stashCounts[this.stashes[stash]['league']] = (this.stashCounts[this.stashes[stash]['league']] +1) || 1;            
+        }
+    }
+
+
+    /* Listen league selector component, when user selects
+    All or specific league, filter accordingly
+    */
     handleLeagueSelection(league){
         
         if(league == 'All'){
@@ -103,15 +114,13 @@ export class StashView{
 
         for(var i = this.filteredStashes.length; i--;){
             if (this.filteredStashes[i]['league'] != league){
-                console.log(this.filteredStashes[i]);
                 this.filteredStashes.splice(i,1);
-                console.log("Popped stash");
             }
         }
     
 
     }
-
+    // Where item container should be placed, should move this to right place..
     GetPosition():object{        
         var position = {
             top: this.selectedItem.y * 49,
