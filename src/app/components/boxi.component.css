@@ -5,7 +5,7 @@
 
 div .row {
   background: #999;
-  width: 250px;
+  width: 280px;
   display: inline-block;
   padding: 0px;
   border: 1px solid #000;
@@ -24,9 +24,14 @@ p {
 }
 
 .itemTitle {
-  color: white;
+  color: rgb(0, 0, 0);
   display: inline-block;
-  background: brown;
+  background: rgb(247, 205, 142);
+}
+
+.itemTitle:first-child{
+  border-bottom:1px solid #444;
+  padding-bottom:2px; 
 }
 
 :host {
@@ -42,4 +47,12 @@ h2 {
 
 div {
   position: relative;
+}
+
+.itemMod{
+  padding-left: 3px;
+  color: rgb(65, 119, 219);
+  background: rgb(31, 31, 31);
+  width: 100%;
+  font-weight: bold;
 }

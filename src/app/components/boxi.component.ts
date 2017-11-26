@@ -28,9 +28,13 @@ export class Boxi{
         this.pos = this.CalculatePosition(this.data);  
     }
 
+    StripTags(str:string):string{
+        let s= str.replace('<<set:MS>><<set:M>><<set:S>>','');
+        return s;
+    }
+
+
     CalculatePosition(itemData){
-        console.log(this.cellSize);
-       return {top:this.data.y*this.cellSize, left:this.data.x*this.cellSize+44};
-       
+       return {top:this.data.y*this.cellSize, left:this.data.x*this.cellSize+44};              
     }
 }

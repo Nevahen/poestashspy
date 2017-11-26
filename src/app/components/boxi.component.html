@@ -1,6 +1,7 @@
 <div [ngStyle]="{'top.px': pos.top,'left.px':pos.left}">
   <div class="row">
-    <p class="itemTitle">{{data.name}} - {{data.typeLine}}</p>
-    <p>{{data.secDescrText}}</p>
+    <p *ngIf="data.name"class="itemTitle">{{StripTags(data.name)}}</p><p class="itemTitle">{{StripTags(data.typeLine)}}</p>
+    <p *ngFor="let prop of data['explicitMods']" class="itemMod">{{prop}}</p>
+
   </div>
 </div>
