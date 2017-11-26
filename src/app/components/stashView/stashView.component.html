@@ -2,9 +2,9 @@
 <div class="d-flex flex-wrap justify-content-center">
   
   <div class="stashContainer mb-2">
-    <stashitem *ngFor="let item of items" [itemData]="item" (mouseover)="SelectItem(item);" (mouseleave)="SelectItem(null);">
+    <stashitem *ngFor="let item of items" [itemData]="item" [stashType]="selectedStash.stashType" (mouseover)="SelectItem(item);" (mouseleave)="SelectItem(null);">
     </stashitem>
-    <boxi *ngIf="selectedItem" [pos]="GetPosition()" [itemData]="selectedItem"></boxi>
+    <boxi *ngIf="selectedItem" [stashType]="selectedStash.stashType" [itemData]="selectedItem"></boxi>
   </div>
 
   <div class="stashlink col-xs-12 col-sm-12 col-md-8 col-xl-4">

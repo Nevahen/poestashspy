@@ -60,10 +60,6 @@ export class StashView{
     GetStash(id:number):void{
         this.apiService.getStashByID(id)
         .subscribe((stash: Stash) => {
-            //Ignore special stashes for now..
-            if(stash.itemData[0]['stashType'] != 'PremiumStash'){
-                return;
-            }
             this.selectedStash = stash.itemData[0];
             this.items = this.selectedStash['itemData'];        
         });  

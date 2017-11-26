@@ -7,9 +7,30 @@ styleUrls: ['./boxi.component.css']
 })
 
 export class Boxi{
-    name = "";
-    desc = "";
 
-    @Input() pos;
-    @Input() itemData;
+    data;
+    pos = {}
+   
+    cellSize;
+    
+    @Input() set itemData(itemData){
+        this.data = itemData;              
+    }
+
+    @Input() set stashType(value){
+        
+        if(value == "QuadStash"){
+            this.cellSize = 23.75;           
+        }
+        else{
+            this.cellSize =47.5;            
+        }
+        this.pos = this.CalculatePosition(this.data);  
+    }
+
+    CalculatePosition(itemData){
+        console.log(this.cellSize);
+       return {top:this.data.y*this.cellSize, left:this.data.x*this.cellSize+44};
+       
+    }
 }
