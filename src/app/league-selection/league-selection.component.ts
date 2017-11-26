@@ -17,6 +17,15 @@ export class LeagueSelectionComponent implements OnInit {
 
   @Input() stashCounts;
 
+  // Total count for stashes
+  stashTotal(){
+    var a = 0;
+    for(let x in this.stashCounts){
+      a = parseInt(this.stashCounts[x]) + a;
+    }
+    return a;
+  }
+
   leagues = ['Standard','Hardcore','Harbinger','Harbinger HC','10 Day Mayhem (ORE004)', '10 Day Mayhem HC (ORE005)'];
 
   leagueOnClick(league:string):void{

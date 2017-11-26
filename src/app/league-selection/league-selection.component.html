@@ -1,12 +1,10 @@
 <div class="btn-group mb-2" role="group">
-  <button type="button" class="btn btn-primary btn-league" (click)="leagueOnClick('All')">All</button>
-  <button type="button" 
-          (click)="leagueOnClick(league)"
-          class="btn btn-primary btn-league"
-          *ngFor="let league of leagues"
-          [disabled]='!stashCounts[league]'>
-          
-          {{league}}
+  <button type="button" class="btn btn-primary btn-league" (click)="leagueOnClick('All')">All
+    <span class="badge badge-default badge-pill"> {{stashTotal()}}</span>
+  </button>
+  <button type="button" (click)="leagueOnClick(league)" class="btn btn-primary btn-league" *ngFor="let league of leagues" [disabled]='!stashCounts[league]'>
+
+    {{league}}
 
     <span class="badge badge-default badge-pill" *ngIf="stashCounts[league]"> {{stashCounts[league]}}</span>
   </button>
