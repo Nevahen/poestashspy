@@ -1,6 +1,14 @@
 .btn-league{
 border: 0!important;
+background: #3493d3ec;
 }
+
+
+.btn-league:disabled{
+    border: 0!important;
+    background: #666666;
+    }
+    
 
 .badge-pill{
     background: rgb(71, 71, 71);

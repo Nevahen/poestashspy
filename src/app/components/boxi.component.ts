@@ -35,6 +35,6 @@ export class Boxi{
 
 
     CalculatePosition(itemData){
-       return {top:this.data.y*this.cellSize, left:this.data.x*this.cellSize+44};              
+       return {top:this.data.y*this.cellSize, left:this.data.x*this.cellSize+(this.cellSize*this.data.w)};              
     }
 }

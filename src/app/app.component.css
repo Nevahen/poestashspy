@@ -23,8 +23,9 @@ footer {
   color: rgb(114, 114, 114);
   font-size: 12px;
   margin-left: 5px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  width: 100vw;
 }
 
 .footertxt {

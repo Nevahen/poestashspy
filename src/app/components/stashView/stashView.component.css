@@ -23,6 +23,7 @@ li:first-of-type {
 li {
   padding-left: 5px;
   font-size: 19px;
+  background: #3493d3ec;
   border-bottom: 1px solid #060888;
   border-right: 1px solid #060888;
 }
@@ -39,12 +40,18 @@ li {
   overflow-x: hidden;
 }
 
+.stashlink ul::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
 .stashinfo ul {
   list-style: none;
 }
 
 .stash-type{
-  background: #383be0;
+  background: #201461;
   border-radius: 15px;
   padding: 2px;
   font-size: 12px;
