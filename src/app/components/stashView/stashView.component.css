@@ -42,3 +42,11 @@ li {
 .stashinfo ul {
   list-style: none;
 }
+
+.stash-type{
+  background: #383be0;
+  border-radius: 15px;
+  padding: 2px;
+  font-size: 12px;
+  margin-top: 3px;
+}

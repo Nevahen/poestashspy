@@ -2,6 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LeagueSelectionComponent } from './league-selection.component';
 
+describe('1st tests', () => {
+  it('true is true', () => expect(true).toBe(true));
+});
+
 describe('LeagueSelectionComponent', () => {
   let component: LeagueSelectionComponent;
   let fixture: ComponentFixture<LeagueSelectionComponent>;

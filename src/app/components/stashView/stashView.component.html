@@ -9,7 +9,7 @@
 
   <div class="stashlink col-xs-12 col-sm-12 col-md-8 col-xl-4">
     <ul>
-      <li *ngFor="let stash of filteredStashes; let i = index" (click)="GetStash(stash.stashID);" class="btn-primary">{{stash.stashName}}</li>
+      <li *ngFor="let stash of filteredStashes; let i = index" (click)="GetStash(stash.stashID);" class="btn-primary">{{stash.stashName}} <span class="float-right stash-type">{{stash.stashType}}</span></li>
     </ul>
  </div>
 
