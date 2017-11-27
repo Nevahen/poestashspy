@@ -91,7 +91,7 @@ def get_ggg_data():
 def process_ggg_data(data):
 
     sql = "INSERT IGNORE into accounts (accountName) VALUES (%s);"
-    sql2 = "INSERT IGNORE into stashes (stashName,stashType,itemData,league,accountName,stashUniqueID) VALUES (%s,%s,%s,%s,%s,%s);"
+    sql2 = "INSERT into stashes (stashName,stashType,itemData,league,accountName,stashUniqueID) VALUES (%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE itemData=VALUES(itemData);"
     # Skip empty account names and empty stashes
     for x in data['stashes']:
         if x['accountName'] and x['items']:
