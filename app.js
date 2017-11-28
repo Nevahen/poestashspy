@@ -3,6 +3,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+var path = require('path');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -29,8 +30,13 @@ app.get('/api/', function (req, res) {
   res.send("lol");
 });
 
-app.listen(3000, function () {
+app.listen(80, function () {
   console.log("Started api server");
+});
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, "dist/index.html"));
 });
 
 
