@@ -1,10 +1,11 @@
 * {
   margin: 0px;
   padding: 0px;
+  font-size:14px;
 }
 
 div .row {
-
+  background: rgba(0, 0, 0, 0.74);  
   width: 340px;
   display: inline-block;
   padding: 0px;
@@ -15,7 +16,6 @@ div .row {
 }
 
 p {
-  background: #999;
   width: 100%;
   text-align: left;
   padding: 0px;
@@ -27,12 +27,12 @@ p {
   display: inline-block;
   text-align: center;
   font-weight: bold;
-  background: rgb(247, 205, 142);
+  font-size:16px;
+  z-index: 100;
 }
 
 .itemTitle:first-child{
-  border-bottom:1px solid #444;
-  padding-bottom:2px; 
+  padding-top: 3px;
 }
 
 :host {
@@ -42,7 +42,6 @@ p {
 }
 
 h2 {
-  background: #888;
   color: #444;
 }
 
@@ -50,11 +49,96 @@ div {
   position: relative;
 }
 
+.crafted-mod{
+  color: rgb(146, 176, 228);
+  font-weight: bold;
+  text-align: center;
+}
+
 .itemMod{
   padding-left: 3px;
-  color: rgb(65, 119, 219);
-  background: rgba(0, 0, 0, 0.568);
+  color: rgb(77, 124, 206);
   width: 100%;
   font-weight: bold;
   text-align: center;
+  
+}
+
+.itemMod:first-of-type{
+  margin-top:7px;
+}
+
+.corrupted{
+  text-align: center;
+  color:red;
+}
+
+.unique{
+  background: rgb(221, 138, 14);
+  background:url("tooltipImages/ItemsHeaderUniqueLeft.png") top left no-repeat,
+  url("tooltipImages/ItemsHeaderUniqueRight.png") top right no-repeat,
+  url("tooltipImages/ItemsHeaderUniqueMiddle.png") top center repeat;
+}
+
+.unique .itemTitle{
+  color:rgb(219, 132, 18)
+}
+
+.rare{
+  background:rgb(255, 195, 31);
+  background:url("tooltipImages/ItemsHeaderRareLeft.png") top left no-repeat,
+  url("tooltipImages/ItemsHeaderRareRight.png") top right no-repeat,
+  url("tooltipImages/ItemsHeaderRareMiddle.png") top center repeat;
+}
+
+.rare .itemTitle{
+  color: #ebd510;
+}
+.magic{
+  background: rgb(52, 202, 202);
+  background:url("tooltipImages/ItemsHeaderMagicLeft.png") top left no-repeat,
+  url("tooltipImages/ItemsHeaderMagicRight.png") top right no-repeat,
+  url("tooltipImages/ItemsHeaderMagicMiddle.png") top center repeat;
+}
+
+.magic .itemTitle{
+  color: #104aeb;
+}
+
+.normal{
+  background: white;
+  background:url("tooltipImages/ItemsHeaderWhiteLeft.png") top left no-repeat,
+  url("tooltipImages/ItemsHeaderWhiteRight.png") top right no-repeat,
+  url("tooltipImages/ItemsHeaderWhiteMiddle.png") top center repeat;
+}
+
+.normal .itemTitle{
+  color:#fff;
+}
+
+.currency{
+  background: Currency;
+  background:url("tooltipImages/ItemsHeaderCurrencyLeft.png") top left no-repeat,
+  url("tooltipImages/ItemsHeaderCurrencyRight.png") top right no-repeat,
+  url("tooltipImages/ItemsHeaderCurrencyMiddle.png") top center repeat;
+}
+
+.currency .itemTitle{
+  color:#fff;
+}
+
+.gem{
+  background: Gem;
+  background:url("tooltipImages/ItemsHeaderGemLeft.png") top left no-repeat,
+  url("tooltipImages/ItemsHeaderGemRight.png") top right no-repeat,
+  url("tooltipImages/ItemsHeaderGemMiddle.png") top center repeat;
+}
+
+.gem .itemTitle{
+  color:#fff;
+}
+
+.unknown{
+  color: #fff;
+  background: rgb(218, 30, 30);
 }

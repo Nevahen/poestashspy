@@ -11,7 +11,7 @@ import { PoEItem } from '../../models/poeitem';
     styleUrls: ["./stashView.component.css"]
 })
 
-export class StashView{
+export class StashView {
 
     constructor(
         private route: ActivatedRoute,
@@ -45,49 +45,48 @@ export class StashView{
     selectedItem: Item currently hovered
     */
 
-    stashes:Stash[];
+    stashes: Stash[];
     stashCounts = {};
-    filteredStashes:Stash[];
-    selectedStash : Stash;
-    items : PoEItem[];
-    selectedItem:PoEItem = null;    
+    filteredStashes: Stash[];
+    selectedStash: Stash;
+    items: PoEItem[];
+    selectedItem: PoEItem = null;
 
-    SelectItem(item:PoEItem){
-        this.selectedItem = item;        
+    SelectItem(item: PoEItem) {
+        this.selectedItem = item;
     }
 
     // TODO:: MODEL THIS UGLY SHIT = ITEMS AND STASH
-    GetStash(id:number):void{
+    GetStash(id: number): void {
         this.apiService.getStashByID(id)
-        .subscribe((stash) => {
-            this.selectedStash = stash['itemData'][0];
-            this.items = this.selectedStash.itemData;        
-        });  
+            .subscribe((stash) => {
+                this.selectedStash = stash['itemData'][0];
+                this.items = this.selectedStash.itemData;
+            });
     }
 
-    GetLatestStashes(account?, cb?:Function){
+    GetLatestStashes(account?, cb?: Function) {
 
         this.apiService.getLatestStashes(account)
-        .subscribe((stashes:Stash[]) => {            
-            this.stashes = stashes['stashes'];
-            this.filteredStashes = this.stashes;
-            this.stashCounts = this.CountStashes(this.stashes);
+            .subscribe((stashes: Stash[]) => {
+                this.stashes = stashes['stashes'];
+                this.filteredStashes = this.stashes;
+                this.stashCounts = this.CountStashes(this.stashes);
 
-            // Callback when stashes fetched
-            if(cb){
-                cb();
-            }
-        })
+                // Callback when stashes fetched
+                if (cb) {
+                    cb();
+                }
+            })
     }
 
     // Count stash amount between each league 
-    CountStashes(stashes:Stash[]):object{
-        for(let stash in stashes){
-            var count = {};
+    CountStashes(stashes: Stash[]): object {
+        var count = {};
+        for (let stash in stashes) {
             let league = stashes[stash].league
-            count[league] = (count[league] + 1) || 1;            
+            count[league] = (count[league] + 1) || 1;
         }
-
         return count;
     }
 
@@ -95,26 +94,21 @@ export class StashView{
     /* Listen league selector component, when user selects
     All or specific league, filter accordingly
     */
-    handleLeagueSelection(league){
-        
-        if(league == 'All'){
+    handleLeagueSelection(league) {
+        if (league == 'All') {
             this.filteredStashes = Object.assign([], this.stashes);
         }
-        else{
+        else {
             this.filterStashes(league);
-        }      
+        }
     }
 
-    filterStashes(league){
-        
+    filterStashes(league) {
         this.filteredStashes = Object.assign([], this.stashes);
-
-        for(var i = this.filteredStashes.length; i--;){
-            if (this.filteredStashes[i].league != league){
-                this.filteredStashes.splice(i,1);
+        for (var i = this.filteredStashes.length; i--;) {
+            if (this.filteredStashes[i].league != league) {
+                this.filteredStashes.splice(i, 1);
             }
         }
-    
-
     }
 }
