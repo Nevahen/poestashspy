@@ -13,7 +13,7 @@ var mysql = require('mysql');
 
 // Database
 var con = mysql.createConnection({
-  host: "192.168.1.109",
+  host: "localhost",
   user: "poestashspy",
   password: "poestashspy",
   database: "poestashspy"
@@ -25,21 +25,19 @@ con.connect(function (error) {
 
 })
 
+app.get('/stashView/*', function (req,res){
+res.sendFile(__dirname + "/dist/index.html");
+});
+
 //Accounts 
 app.get('/api/', function (req, res) {
   res.send("lol");
 });
 
-app.listen(80, function () {
+app.listen(8080, function () {
   console.log("Started api server");
 });
-app.use(express.static(path.join(__dirname, "dist")));
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, "dist/index.html"));
-});
-
-
+app.use(express.static(__dirname + "/dist"));
 
 app.get('/api/accounts', function (req, res) {
 
@@ -148,6 +146,10 @@ app.get('/api/stashes/:id', function (req, res) {
     }));
   });
 
+});
+
+app.get('/*', function (req,res){
+    res.sendFile(__dirname + "/dist/index.html");
 });
 
 app.use(function (req, res, next) {
