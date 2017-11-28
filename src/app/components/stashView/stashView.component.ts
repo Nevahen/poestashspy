@@ -13,30 +13,30 @@ import { PoEItem } from '../../models/poeitem';
 
 export class StashView{
 
-        constructor(
-            private route: ActivatedRoute,
-            private router: Router,
-            private apiService: ApiService
-        ){}
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private apiService: ApiService
+    ) { }
 
-        ngOnInit(){
+    ngOnInit() {
 
-            let account = this.route.snapshot.paramMap.get('account');
+        let account = this.route.snapshot.paramMap.get('account');
 
-            // If coming from account search use account name as parameter
-            // When stashes are fetched load 1st tab via callback
-            if(account){
+        // If coming from account search use account name as parameter
+        // When stashes are fetched load 1st tab via callback
+        if (account) {
             this.GetLatestStashes(account, () => {
                 //NOTICE: Maybe should expect zero stashes if we change our system.
                 this.GetStash(this.stashes[0].stashID);
-            });         
-            }
-            else{
-            // get random stash
-            this.GetStash(1);                   
-            this.GetLatestStashes();
-            }           
+            });
         }
+        else {
+            // get random stash
+            this.GetStash(1);
+            this.GetLatestStashes();
+        }
+    }
 
     /*
     stashes = list of all resulted stashes
@@ -47,13 +47,12 @@ export class StashView{
 
     stashes:Stash[];
     stashCounts = {};
-    filteredStashes = null;
+    filteredStashes:Stash[];
     selectedStash : Stash;
     items : PoEItem[];
+    selectedItem:PoEItem = null;    
 
-    selectedItem = null;    
-
-    SelectItem(item){
+    SelectItem(item:PoEItem){
         this.selectedItem = item;        
     }
 
@@ -61,8 +60,8 @@ export class StashView{
     GetStash(id:number):void{
         this.apiService.getStashByID(id)
         .subscribe((stash) => {
-            this.selectedStash = stash['itemData'];
-            this.items = this.selectedStash[0].itemData;        
+            this.selectedStash = stash['itemData'][0];
+            this.items = this.selectedStash.itemData;        
         });  
     }
 
@@ -72,7 +71,7 @@ export class StashView{
         .subscribe((stashes:Stash[]) => {            
             this.stashes = stashes['stashes'];
             this.filteredStashes = this.stashes;
-            this.CountStashes();
+            this.stashCounts = this.CountStashes(this.stashes);
 
             // Callback when stashes fetched
             if(cb){
@@ -81,11 +80,15 @@ export class StashView{
         })
     }
 
-
-    CountStashes(){
-        for(let stash in this.stashes){
-            this.stashCounts[this.stashes[stash].league] = (this.stashCounts[this.stashes[stash].league] +1) || 1;            
+    // Count stash amount between each league 
+    CountStashes(stashes:Stash[]):object{
+        for(let stash in stashes){
+            var count = {};
+            let league = stashes[stash].league
+            count[league] = (count[league] + 1) || 1;            
         }
+
+        return count;
     }
 
 
@@ -107,7 +110,7 @@ export class StashView{
         this.filteredStashes = Object.assign([], this.stashes);
 
         for(var i = this.filteredStashes.length; i--;){
-            if (this.filteredStashes[i]['league'] != league){
+            if (this.filteredStashes[i].league != league){
                 this.filteredStashes.splice(i,1);
             }
         }
