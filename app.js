@@ -155,6 +155,10 @@ app.get('/*', function (req,res){
     res.sendFile(__dirname + "/dist/index.html");
 });
 
+app.get('/*', function (req,res){
+    res.sendFile(__dirname + "/dist/index.html");
+});
+
 app.use(function (req, res, next) {
   res.status(404);
   res.type('text').send("not found");
