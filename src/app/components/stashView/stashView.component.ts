@@ -3,6 +3,7 @@ import { ApiService } from '../../api.service';
 import { Stash } from '../../models/stash.model';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router/';
+import { PoEItem } from '../../models/poeitem';
 
 @Component({
     selector: "stashview",
@@ -27,7 +28,7 @@ export class StashView{
             if(account){
             this.GetLatestStashes(account, () => {
                 //NOTICE: Maybe should expect zero stashes if we change our system.
-                this.GetStash(this.stashes[0]['stashID']);
+                this.GetStash(this.stashes[0].stashID);
             });         
             }
             else{
@@ -44,11 +45,11 @@ export class StashView{
     selectedItem: Item currently hovered
     */
 
-    stashes = null;
+    stashes:Stash[];
     stashCounts = {};
     filteredStashes = null;
-    selectedStash : any;
-    items : any;
+    selectedStash : Stash;
+    items : PoEItem[];
 
     selectedItem = null;    
 
@@ -59,16 +60,16 @@ export class StashView{
     // TODO:: MODEL THIS UGLY SHIT = ITEMS AND STASH
     GetStash(id:number):void{
         this.apiService.getStashByID(id)
-        .subscribe((stash: Stash) => {
-            this.selectedStash = stash.itemData[0];
-            this.items = this.selectedStash['itemData'];        
+        .subscribe((stash) => {
+            this.selectedStash = stash['itemData'];
+            this.items = this.selectedStash[0].itemData;        
         });  
     }
 
     GetLatestStashes(account?, cb?:Function){
 
         this.apiService.getLatestStashes(account)
-        .subscribe((stashes) => {            
+        .subscribe((stashes:Stash[]) => {            
             this.stashes = stashes['stashes'];
             this.filteredStashes = this.stashes;
             this.CountStashes();
@@ -78,13 +79,12 @@ export class StashView{
                 cb();
             }
         })
-
     }
 
 
     CountStashes(){
         for(let stash in this.stashes){
-            this.stashCounts[this.stashes[stash]['league']] = (this.stashCounts[this.stashes[stash]['league']] +1) || 1;            
+            this.stashCounts[this.stashes[stash].league] = (this.stashCounts[this.stashes[stash].league] +1) || 1;            
         }
     }
 
@@ -99,9 +99,7 @@ export class StashView{
         }
         else{
             this.filterStashes(league);
-        }
-        
-
+        }      
     }
 
     filterStashes(league){
@@ -115,13 +113,5 @@ export class StashView{
         }
     
 
-    }
-    // Where item container should be placed, should move this to right place..
-    GetPosition():object{        
-        var position = {
-            top: this.selectedItem.y * 49,
-            left: this.selectedItem.x * 48 + 60
-        }
-        return position;        
     }
 }

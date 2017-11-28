@@ -15,21 +15,21 @@ export class ApiService {
 
   private stashUrl = '/api/stashes/';
 
-  getStashByID(stashid: number): Observable<Stash>{
+  getStashByID(stashid: number): Observable<Stash[]>{
 
     var sUrl = this.stashUrl + stashid;
     console.log(sUrl);
       
-    return this.http.get<Stash>(sUrl);
+    return this.http.get<Stash[]>(sUrl);
     }
 
   // Rename / Make new function because it doesn't get only latest stashes anymore
-  getLatestStashes(account?:string): Observable<Stash>{
+  getLatestStashes(account?:string): Observable<Stash[]>{
 
     if(account){
-      return this.http.get<Stash>('/api/accounts/'+account+'/stashes');
+      return this.http.get<Stash[]>('/api/accounts/'+account+'/stashes');
     }
-    return this.http.get<Stash>('/api/stashes/');
+    return this.http.get<Stash[]>('/api/stashes/');
   }
 
   searchAccountByName(account: string): Observable<string>{

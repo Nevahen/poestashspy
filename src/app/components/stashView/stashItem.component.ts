@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { PoEItem } from "../../models/poeitem";
 
 @Component({
     selector: "stashitem",
@@ -10,7 +11,7 @@ export class StashItem{
     
     cellSize;
 
-    @Input() itemData;
+    @Input() itemData:PoEItem;
     @Input() set stashType(value: string){
         
         if(value === "QuadStash"){
