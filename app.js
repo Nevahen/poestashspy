@@ -1,4 +1,10 @@
-// Prototype - TODO: refactor split to routes, add logging
+/*
+============================= SINGLE FILE MESS ========================
+/////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\//////////////////////////////////////
+-----------------------------------------------------------------------
+=======================================================================
+*/
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -13,7 +19,7 @@ var mysql = require('mysql');
 
 // Database
 var con = mysql.createConnection({
-  host: "192.168.1.109",
+  host: "localhost",
   user: "poestashspy",
   password: "poestashspy",
   database: "poestashspy"
@@ -22,24 +28,21 @@ var con = mysql.createConnection({
 con.connect(function (error) {
   if (error) throw error;
   console.log("Connected to MySQL");
-
 })
+
+app.get('/stashView/*', function (req,res){
+res.sendFile(__dirname + "/dist/index.html");
+});
 
 //Accounts 
 app.get('/api/', function (req, res) {
   res.send("lol");
 });
 
-app.listen(80, function () {
+app.listen(8080, function () {
   console.log("Started api server");
 });
-app.use(express.static(path.join(__dirname, "dist")));
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, "dist/index.html"));
-});
-
-
+app.use(express.static(__dirname + "/dist"));
 
 app.get('/api/accounts', function (req, res) {
 
@@ -118,7 +121,6 @@ app.get('/api/stashes/', function (req, res) {
       stashes: result
     }));
   });
-
 });
 
 app.get('/api/stashes/:id', function (req, res) {
@@ -147,12 +149,14 @@ app.get('/api/stashes/:id', function (req, res) {
       itemData: result
     }));
   });
+});
 
+app.get('/*', function (req,res){
+    res.sendFile(__dirname + "/dist/index.html");
 });
 
 app.use(function (req, res, next) {
   res.status(404);
-
   res.type('text').send("not found");
 
 })
