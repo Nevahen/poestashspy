@@ -1,8 +1,8 @@
 <div [ngStyle]="{'top.px': pos.top,'left.px':pos.left}">
   <div class="row">
-    <p *ngIf="data.name"class="itemTitle">{{StripTags(data.name)}}</p><p class="itemTitle">{{StripTags(data.typeLine)}}</p>
+   <div [ngClass]="frameType"> <p *ngIf="data.name"class="itemTitle">{{StripTags(data.name)}}</p><p class="itemTitle">{{StripTags(data.typeLine)}}</p></div>
     <p *ngFor="let prop of data.explicitMods" class="itemMod">{{prop}}</p>
-    <p *ngIf="data.craftedMods" class="alert alert-info">{{data.craftedMods[0]}}</p>
-
+    <p *ngIf="data.craftedMods" class="crafted-mod">{{data.craftedMods[0]}}</p>
+    <p *ngIf="data.corrupted" class="corrupted">Corrupted</p>
   </div>
 </div>
