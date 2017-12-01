@@ -24,8 +24,9 @@ p {
 
 .itemTitle {
   color: rgb(0, 0, 0);
-  display: inline-block;
   text-align: center;
+  width: 100%;
+  display: inline-block;
   font-weight: bold;
   font-size:16px;
   z-index: 100;
@@ -69,6 +70,7 @@ div {
 }
 
 .corrupted{
+  margin-top:5px;
   text-align: center;
   color:red;
 }
@@ -102,7 +104,7 @@ div {
 }
 
 .magic .itemTitle{
-  color: #104aeb;
+  color: #5581fc;
 }
 
 .normal{
@@ -134,6 +136,11 @@ div {
   url("tooltipImages/ItemsHeaderGemMiddle.png") top center repeat;
 }
 
+.divination-card .itemTitle{
+  color: green;
+  text-align: center;
+}
+
 .gem .itemTitle{
   color:#fff;
 }
@@ -141,4 +148,16 @@ div {
 .unknown{
   color: #fff;
   background: rgb(218, 30, 30);
+}
+
+.divination-stack{
+  color: #fff;
+  position: absolute;
+  top:2px;
+}
+
+hr{
+  border-image: url("./tooltipImages/ItemsSeparatorRare.png") 8;
+  border-width: 3px;
+  margin-bottom: 3px;
 }
