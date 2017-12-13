@@ -2,7 +2,7 @@
 <div class="d-flex flex-wrap justify-content-center">
   
   <div class="stashContainer mb-2">
-    <stashitem *ngFor="let item of items" [itemData]="item" [stashType]="selectedStash.stashType" (mouseover)="SelectItem(item);" (mouseleave)="SelectItem(null);">
+    <stashitem *ngFor="let item of items; let count = index" [itemData]="item" [stashType]="selectedStash.stashType" (mouseover)="SelectItem(item,count);" (mouseleave)="SelectItem(null);">
     </stashitem>
     <boxi *ngIf="selectedItem" [stashType]="selectedStash.stashType" [itemData]="selectedItem"></boxi>
   </div>

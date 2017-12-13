@@ -12,6 +12,7 @@ export class Boxi {
     data: PoEItem;
     frameType: string;
     pos = { top: 0, left: 0 };
+    _stashType;
 
     cellSize;
 
@@ -20,7 +21,13 @@ export class Boxi {
         this.frameType = this.GetFrameTypeString();
     }
 
+            get stashType(){
+                return this._stashType;
+            }
+
     @Input() set stashType(value) {
+
+        this._stashType;
 
         if (value == "QuadStash") {
             this.cellSize = 23.75;
@@ -76,6 +83,15 @@ export class Boxi {
 
 
     CalculatePosition(itemData) {
+        if(this.stashType == "DivinationCardStash"){
+            console.log("a");
+            return{                            
+            top: Math.floor(this.itemData.itemIndex / 12) * this.cellSize,
+            left: Math.floor(this.itemData.itemIndex % 12) * this.cellSize + (this.cellSize * this.data.w)
+                
+            }
+        }
+        
         return {
             top: this.data.y * this.cellSize,
             left: this.data.x * this.cellSize + (this.cellSize * this.data.w)

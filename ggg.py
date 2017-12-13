@@ -24,7 +24,7 @@ def gggApi():
 
 
 def connect_db():
-    dbhost = "192.168.1.109"
+    dbhost = "localhost"
     dbuser = "poestashspy"
     dbpass = "poestashspy"
 
@@ -52,10 +52,10 @@ def get_latest_change_id():
 
         return r['next_change_id']
 
-    except ConnectionRefusedError:
+    except requests.ConnectionRefusedError:
         print("POE Ninja: Connection Refused!")
 
-    except TimeoutError:
+    except requests.TimeoutError:
         print("POE Ninja: Timed out!")
 
     except:
@@ -76,9 +76,31 @@ def get_ggg_data():
     global nextID
     url = "http://www.pathofexile.com/api/public-stash-tabs?id=" + nextID
     print(url)
-    r = requests.get(url)
-    r = json.loads(r.text)
 
+    try:
+        r = requests.get(url)
+    except requests.TimeoutError:
+        print('PoE api timed out - sleeping')
+        time.sleep(5)
+        return
+    except requests.ConnectionError: 
+        print('PoE api Connection error - sleeping')
+        time.sleep(5)
+        return
+    except requests.RequestException:
+        print('Poe API Unexpected error - sleeping')
+        time.sleep(5)
+
+    try:
+        r = json.loads(r.text)
+    except ValueError:
+        print('Not valid JSON -- sleeping')
+        time.sleep(5)
+        return
+    except:
+        print('Unexpected error -- sleeping')
+        time.sleep(5)
+        return
     if not r['next_change_id']:
         print("Is PoE Api down?")
         return

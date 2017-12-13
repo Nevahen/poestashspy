@@ -142,7 +142,7 @@ div {
 }
 
 .gem .itemTitle{
-  color:#fff;
+  color:rgb(12, 163, 93);
 }
 
 .unknown{
@@ -154,6 +154,11 @@ div {
   color: #fff;
   position: absolute;
   top:2px;
+}
+
+.item-note{
+  text-align: center;
+  color: #fdd8a8;
 }
 
 hr{

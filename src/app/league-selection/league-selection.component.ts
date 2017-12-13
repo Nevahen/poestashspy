@@ -26,7 +26,7 @@ export class LeagueSelectionComponent implements OnInit {
     return a;
   }
 
-  leagues = ['Standard','Hardcore','Harbinger','Harbinger HC','10 Day Mayhem (ORE004)', '10 Day Mayhem HC (ORE005)'];
+  leagues = ['Standard','Hardcore','Abyss','Hardcore Abyss'];
 
   leagueOnClick(league:string):void{
         this.leagueSelection.emit(league);

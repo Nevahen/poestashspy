@@ -16,5 +16,5 @@ export class PoEItem {
     enchantMods: string[];
     craftedMods: string[];
     frameType:number;
-
+    itemIndex:number;
 }

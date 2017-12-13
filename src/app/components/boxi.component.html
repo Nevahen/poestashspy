@@ -8,8 +8,9 @@
     <span *ngIf="data.name"class="itemTitle">{{StripTags(data.name)}}<br/></span><span class="itemTitle">{{StripTags(data.typeLine)}}</span></div>
     <p *ngFor="let prop of data.implicitMods" class="itemMod">{{prop}}</p><hr *ngIf="data.implicitMods"/>
     <p *ngFor="let prop of data.explicitMods" class="itemMod">{{prop}}</p>
-    <p *ngIf="data.craftedMods" class="crafted-mod">{{data.craftedMods[0]}}</p>
+    <p *ngIf="data.craftedMods" class="crafted-mod">{{data.craftedMods[0]}}</p> 
     <img *ngIf="data.artFilename" [ngStyle]="{'background':'url(https://www.pathofexile.com/image/gen/divination_cards/'+data.artFilename+'.png)','width':'237px','height':'170px'}">
     <p *ngIf="data.corrupted" class="corrupted">Corrupted</p>
-    <p *ngIf="!data.identified" class="corrupted">Unidentified</p>  </div>
+    <p *ngIf="!data.identified" class="corrupted">Unidentified</p> 
+    <p *ngIf="data.note" class="item-note">{{data.note}}</p> </div>
 </div>

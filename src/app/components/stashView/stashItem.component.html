@@ -1,4 +1,4 @@
-<div [ngStyle]="{
+<div *ngIf="stashType != 'DivinationCardStash'; else divinationBox" [ngStyle]="{
                 'width.px': cellSize*itemData.w,
                 'height.px': cellSize*itemData.h,               
                 'top.px': cellSize*itemData.y,
@@ -7,3 +7,15 @@
                 'background-image': 'url('+itemData.icon+')'}"
                 >
 </div>
+
+<ng-template #divinationBox>
+<div [ngStyle]="{
+    'width.px': cellSize*itemData.w,
+    'height.px': cellSize*itemData.h,               
+    'top.px': CalcSpecialLocationX(),
+    'left.px': CalcSpecialLocationY(),
+    'background-size': '100%, 100%',
+    'background-image': 'url('+itemData.icon+')'}"
+    >
+</div>
+</ng-template>

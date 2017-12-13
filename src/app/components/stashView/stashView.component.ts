@@ -52,7 +52,9 @@ export class StashView {
     items: PoEItem[];
     selectedItem: PoEItem = null;
 
-    SelectItem(item: PoEItem) {
+    SelectItem(item: PoEItem, itemIndex?) {
+        if(itemIndex){item.itemIndex = itemIndex;}
+       
         this.selectedItem = item;
     }
 
