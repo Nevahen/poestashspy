@@ -7,9 +7,15 @@
     font-weight: bold;
 }
 
+html{
+    background: #000;
+    background-image: url('./images/waroftheatlas.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 body{
-    background: rgb(85, 85, 85);
-    background-image: url('./images/oriat.jpg');
+    background: #00000000;
     height: 100%;
     user-select: none;
     overflow: hidden;
