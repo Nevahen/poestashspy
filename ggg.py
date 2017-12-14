@@ -33,7 +33,7 @@ def connect_db():
             dbhost, dbuser, dbpass,
             'poestashspy',
             cursorclass=pymysql.cursors.DictCursor)
-        print("Connected to database", dbuser, "@", dbhost)
+        print("Connected to database", dbuser + "@" + dbhost)
         connection.set_charset('utf8')
         return connection
     except:
@@ -52,10 +52,7 @@ def get_latest_change_id():
 
         return r['next_change_id']
 
-    except requests.ConnectionRefusedError:
-        print("POE Ninja: Connection Refused!")
-
-    except requests.TimeoutError:
+    except requests.exceptions.Timeout:
         print("POE Ninja: Timed out!")
 
     except:
@@ -67,7 +64,6 @@ def get_latest_change_id():
 def gggLoop():
     cur = db_connection.cursor()
     while True:
-        print(nextID)
         time.sleep(1)
         get_ggg_data()
 
@@ -79,27 +75,28 @@ def get_ggg_data():
 
     try:
         r = requests.get(url)
-    except requests.TimeoutError:
+    except requests.exceptions.Timeout:
         print('PoE api timed out - sleeping')
-        time.sleep(5)
+        time.sleep(15)
         return
-    except requests.ConnectionError: 
+    except requests.exceptions.ConnectionError: 
         print('PoE api Connection error - sleeping')
-        time.sleep(5)
+        time.sleep(15)
         return
-    except requests.RequestException:
+    except requests.exceptions.RequestException:
         print('Poe API Unexpected error - sleeping')
-        time.sleep(5)
+        time.sleep(15)
+        return
 
     try:
         r = json.loads(r.text)
     except ValueError:
         print('Not valid JSON -- sleeping')
-        time.sleep(5)
+        time.sleep(15)
         return
     except:
         print('Unexpected error -- sleeping')
-        time.sleep(5)
+        time.sleep(15)
         return
     if not r['next_change_id']:
         print("Is PoE Api down?")
